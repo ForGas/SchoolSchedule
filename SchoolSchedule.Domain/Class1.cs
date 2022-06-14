@@ -42,6 +42,13 @@ public class Lesson : ValueObject
 
     public override string ToString() => Name;
 
+    public static implicit operator string(Lesson lesson) => lesson.ToString();
+
+    public static explicit operator Lesson(string name)
+        => !Lessons.Contains(new Lesson(name)) 
+            ? throw new ArgumentException(name)
+            : new Lesson(name);
+    
     protected static IEnumerable<Lesson> Lessons
     {
         get
