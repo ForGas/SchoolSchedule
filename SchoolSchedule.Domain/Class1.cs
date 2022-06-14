@@ -40,10 +40,7 @@ public class Lesson : ValueObject
     public static Lesson ComputerScience => new("ComputerScience");
     public static Lesson PhysicalEducation  => new("PhysicalEducation");
 
-    public override string ToString()
-    {
-        return Name;
-    }
+    public override string ToString() => Name;
 
     protected static IEnumerable<Lesson> Lessons
     {
