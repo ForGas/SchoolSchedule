@@ -9,8 +9,6 @@ public static class SchoolDayScheduleFactory
     {
         var schoolSchedule = new SchoolDaySchedule();
 
-
-
         return schoolSchedule;
     }
 }

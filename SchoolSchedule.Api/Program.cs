@@ -9,25 +9,31 @@ using SchoolSchedule.Api;
 using SchoolSchedule.Application;
 using SchoolSchedule.Infrastructure;
 using SchoolSchedule.Infrastructure.Data;
+using System.Text.Json.Serialization.Metadata;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplication(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddRepository(builder.Configuration);
+
+
 builder.Services
        .AddControllers()
        .AddNewtonsoftJson(options =>
        {
            options.SerializerSettings.Converters.Add(new StringEnumConverter());
-           options.SerializerSettings.Converters.Add(new DateOnlyJsonConverter());
-           options.SerializerSettings.Converters.Add(new TimeOnlyJsonConverter());
            options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+           options.SerializerSettings.DateParseHandling = DateParseHandling.DateTimeOffset;
            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
            options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
            options.SerializerSettings.MissingMemberHandling = MissingMemberHandling.Ignore;
        });
 
+builder.Services.Configure<JsonOptions>(options =>
+{
+    options.SerializerOptions.IncludeFields = true;
+});
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
