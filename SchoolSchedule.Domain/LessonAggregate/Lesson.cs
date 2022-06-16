@@ -1,6 +1,7 @@
 ﻿using SchoolSchedule.Domain.Common;
+using SchoolSchedule.Domain.EducationalClassAggregate;
 
-namespace SchoolSchedule.Domain;
+namespace SchoolSchedule.Domain.LessonAggregate;
 
 public class Lesson : ValueObject
 {

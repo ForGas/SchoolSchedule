@@ -1,4 +1,6 @@
-﻿namespace SchoolSchedule.Domain.Common;
+﻿using SchoolSchedule.Domain.LessonAggregate;
+
+namespace SchoolSchedule.Domain.Common;
 
 public static class Extensions
 {

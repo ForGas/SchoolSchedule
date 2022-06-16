@@ -1,6 +1,6 @@
 ﻿using SchoolSchedule.Domain.Common;
 
-namespace SchoolSchedule.Domain;
+namespace SchoolSchedule.Domain.LessonAggregate;
 
 public class Subject : ValueObject
 {
@@ -40,4 +40,3 @@ public class Subject : ValueObject
         yield return Name;
     }
 }
-

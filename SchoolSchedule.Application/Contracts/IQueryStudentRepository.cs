@@ -1,4 +1,4 @@
-﻿using SchoolSchedule.Domain;
+﻿using SchoolSchedule.Domain.EducationalClassAggregate;
 
 namespace SchoolSchedule.Application.Contracts;
 

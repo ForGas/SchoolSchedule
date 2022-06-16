@@ -3,7 +3,7 @@ using SchoolSchedule.Application.Contracts;
 using SchoolSchedule.Domain.Common;
 using SchoolSchedule.Infrastructure.Data;
 
-namespace SchoolSchedule.Infrastructure.Services;
+namespace SchoolSchedule.Infrastructure.Repository.Base;
 
 public abstract class CommandBaseRepository<TEntity> : ICommandBaseRepository<TEntity>
     where TEntity : IdentityBase
@@ -16,7 +16,7 @@ public abstract class CommandBaseRepository<TEntity> : ICommandBaseRepository<TE
 
     public async Task DeleteAsync(TEntity entity)
         => await Task.Run(() => _dbSet.Remove(entity));
-    
+
     public async Task RemoveByIdAsync(Guid id)
         => await DeleteAsync(_dbSet.Find(id) ?? throw new ArgumentNullException(nameof(id)));
 
@@ -26,7 +26,7 @@ public abstract class CommandBaseRepository<TEntity> : ICommandBaseRepository<TE
         return entity.Entity.Id;
     }
 
-    public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)  
+    public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
         => await _context.SaveChangesAsync(cancellationToken);
 
     public async Task UpdateAsync(TEntity entity)

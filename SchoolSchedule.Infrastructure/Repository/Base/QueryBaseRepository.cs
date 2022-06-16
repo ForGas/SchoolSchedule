@@ -4,7 +4,7 @@ using SchoolSchedule.Domain.Common;
 using SchoolSchedule.Infrastructure.Data;
 using System.Linq.Expressions;
 
-namespace SchoolSchedule.Infrastructure.Services;
+namespace SchoolSchedule.Infrastructure.Repository.Base;
 
 public abstract class QueryBaseRepository<TEntity> : IQueryBaseRepository<TEntity>
     where TEntity : IdentityBase
@@ -14,13 +14,13 @@ public abstract class QueryBaseRepository<TEntity> : IQueryBaseRepository<TEntit
 
     public QueryBaseRepository(ApplicationDbContext context)
         => (_context, _dbSet) = (context, context.Set<TEntity>());
-  
+
     public IQueryable<TEntity> Get(Expression<Func<TEntity, bool>> selector)
         => _dbSet.Where(selector).AsQueryable();
 
-    public async Task<TEntity?> GetByIdAsync(Guid Id)
-        => await _dbSet.SingleOrDefaultAsync(x => x.Id == Id);
+    public async Task<TEntity> GetByIdAsync(Guid Id)
+        => await _dbSet.SingleAsync(x => x.Id == Id);
 
-    public IQueryable<TEntity> GetAll() 
+    public IQueryable<TEntity> GetAll()
         => _dbSet.AsQueryable();
 }

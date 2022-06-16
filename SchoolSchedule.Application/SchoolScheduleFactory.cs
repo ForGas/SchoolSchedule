@@ -1,5 +1,5 @@
 ﻿using SchoolSchedule.Application.SchoolScheduleContext.Queries.GetSchoolScheduleById;
-using SchoolSchedule.Domain;
+using SchoolSchedule.Domain.SchoolDayScheduleAggregate;
 
 namespace SchoolSchedule.Application;
 

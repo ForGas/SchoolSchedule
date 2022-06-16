@@ -1,6 +1,6 @@
 ﻿using SchoolSchedule.Domain.Common;
 
-namespace SchoolSchedule.Domain;
+namespace SchoolSchedule.Domain.SchoolDayScheduleAggregate;
 
 public class SchoolDaySchedule : IdentityBase
 {

@@ -1,8 +1,9 @@
 ﻿using SchoolSchedule.Application.Contracts;
-using SchoolSchedule.Domain;
+using SchoolSchedule.Domain.EducationalClassAggregate;
 using SchoolSchedule.Infrastructure.Data;
+using SchoolSchedule.Infrastructure.Repository.Base;
 
-namespace SchoolSchedule.Infrastructure.Services
+namespace SchoolSchedule.Infrastructure.Repository
 {
     public class CommandStudentRepository : CommandBaseRepository<Student>, ICommandStudentRepository
     {
@@ -12,7 +13,7 @@ namespace SchoolSchedule.Infrastructure.Services
 
         public async Task<Guid> EnrollmentInSchoolAsync(Student student)
         {
-            var transaction =  await _context.Database.BeginTransactionAsync();
+            var transaction = await _context.Database.BeginTransactionAsync();
 
             try
             {
