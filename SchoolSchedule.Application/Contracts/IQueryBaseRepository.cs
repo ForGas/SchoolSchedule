@@ -5,6 +5,6 @@ namespace SchoolSchedule.Application.Contracts;
 public interface IQueryBaseRepository<T>
 {
     IQueryable<T> Get(Expression<Func<T, bool>> selector);
-    IQueryable<T> Get();
+    Task<T?> GetByIdAsync(Guid Id);
     IQueryable<T> GetAll();
 }

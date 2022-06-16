@@ -1,6 +1,4 @@
-﻿using SchoolSchedule.Domain.Common;
-
-namespace SchoolSchedule.Application.Contracts;
+﻿namespace SchoolSchedule.Application.Contracts;
 
 public interface ICommandBaseRepository<T>
 {

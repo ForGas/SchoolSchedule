@@ -12,16 +12,13 @@ public abstract class CommandBaseRepository<TEntity> : ICommandBaseRepository<TE
     protected DbSet<TEntity> _dbSet;
 
     public CommandBaseRepository(ApplicationDbContext context)
-    {
-        _context = context;
-        _dbSet = _context.Set<TEntity>();
-    }
+        => (_context, _dbSet) = (context, context.Set<TEntity>());
 
     public async Task DeleteAsync(TEntity entity)
         => await Task.Run(() => _dbSet.Remove(entity));
     
     public async Task RemoveByIdAsync(Guid id)
-        => await DeleteAsync(_dbSet.Find(id));
+        => await DeleteAsync(_dbSet.Find(id) ?? throw new ArgumentNullException(nameof(id)));
 
     public async Task<Guid> SaveAsync(TEntity newEntity)
     {

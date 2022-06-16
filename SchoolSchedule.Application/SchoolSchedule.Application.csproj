@@ -15,13 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SchoolSchedule\Commands\" />
-    <Folder Include="SchoolSchedule\Queries\" />
-    <Folder Include="Student\Commands\" />
-    <Folder Include="Student\Queries\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SchoolSchedule.Domain\SchoolSchedule.Domain.csproj" />
   </ItemGroup>
 
