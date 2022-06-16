@@ -10,7 +10,7 @@ namespace SchoolSchedule.Api.Controllers;
 public class StudentController : ApiControllerBase
 {
     [HttpPost]
-    public async Task<Guid> Create([FromForm] CreateStudentCommand command)
+    public async Task<Guid> Create([FromBody] CreateStudentCommand command)
         => await Mediator.Send(command);
 
     [HttpGet]

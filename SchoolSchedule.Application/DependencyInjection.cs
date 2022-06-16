@@ -3,6 +3,7 @@ using FluentValidation;
 using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SchoolSchedule.Application.Contracts;
 
 namespace SchoolSchedule.Application;
 

@@ -1,12 +1,14 @@
 ﻿using MediatR;
 using SchoolSchedule.Application.Contracts;
-using SchoolSchedule.Domain;
+using SchoolSchedule.Domain.EducationalClassAggregate;
 
 namespace SchoolSchedule.Application.StudentContext.Commands.CreateStudent;
 
 public class CreateStudentCommand : IRequest<Guid>
 {
     public string FullName { get; set; } = null!;
+
+    //[JsonConverter(typeof(DateOnlyJsonConverter))]
     public DateOnly BirthYear { get; set; }
 }
 

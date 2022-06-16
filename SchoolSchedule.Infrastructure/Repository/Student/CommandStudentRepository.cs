@@ -7,9 +7,7 @@ namespace SchoolSchedule.Infrastructure.Repository
 {
     public class CommandStudentRepository : CommandBaseRepository<Student>, ICommandStudentRepository
     {
-        public CommandStudentRepository(ApplicationDbContext context) : base(context)
-        {
-        }
+        public CommandStudentRepository(ApplicationDbContext context) : base(context) { }
 
         public async Task<Guid> EnrollmentInSchoolAsync(Student student)
         {
