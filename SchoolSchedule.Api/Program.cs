@@ -5,7 +5,7 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using SchoolSchedule.Api;
+using SchoolSchedule.Api.Filters;
 using SchoolSchedule.Application;
 using SchoolSchedule.Infrastructure;
 using SchoolSchedule.Infrastructure.Data;
@@ -19,11 +19,11 @@ builder.Services.AddRepository(builder.Configuration);
 
 
 builder.Services
-       .AddControllers()
+       .AddControllers(options => options.Filters.Add<ApplicationExceptionFilterAttribute>())
        .AddNewtonsoftJson(options =>
        {
            options.SerializerSettings.Converters.Add(new StringEnumConverter());
-           options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+           //options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
            options.SerializerSettings.DateParseHandling = DateParseHandling.DateTimeOffset;
            options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
            options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -55,6 +55,8 @@ if (context.Database.IsSqlServer())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
+    //app.UseExceptionHandler("/Error");
+    app.UseHsts();
     app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("/swagger/v1/swagger.json", "SchoolSchedule v1");

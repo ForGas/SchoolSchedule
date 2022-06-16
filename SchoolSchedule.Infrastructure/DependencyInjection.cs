@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SchoolSchedule.Application.Contracts;
 using SchoolSchedule.Infrastructure.Data;
+using SchoolSchedule.Infrastructure.Repository;
 
 namespace SchoolSchedule.Infrastructure;
 
@@ -13,6 +15,17 @@ public static class DependencyInjection
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
                 .UseLazyLoadingProxies());
+
+        return services;
+    }
+
+    public static IServiceCollection AddRepository(this IServiceCollection services, IConfiguration configuration)
+    {
+        services.AddTransient<ICommandStudentRepository, CommandStudentRepository>();
+        services.AddTransient<IQueryStudentRepository, QueryStudentRepository>();
+
+        services.AddScoped(x => new CommandStudentRepository(context: x.GetRequiredService<ApplicationDbContext>()));
+        services.AddScoped(x => new QueryStudentRepository(context: x.GetRequiredService<ApplicationDbContext>()));
 
         return services;
     }
