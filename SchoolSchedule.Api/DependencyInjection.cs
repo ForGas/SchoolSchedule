@@ -11,8 +11,8 @@ public static class DependencyInjection
         services.AddTransient<ICommandStudentRepository, CommandStudentRepository>();
         services.AddTransient<IQueryStudentRepository, QueryStudentRepository>();
 
-        services.AddScoped(x => new CommandStudentRepository(x.GetService<ApplicationDbContext>()));
-        services.AddScoped(x => new QueryStudentRepository(x.GetService<ApplicationDbContext>()));
+        services.AddScoped(x => new CommandStudentRepository(x.GetRequiredService<ApplicationDbContext>()));
+        services.AddScoped(x => new QueryStudentRepository(x.GetRequiredService<ApplicationDbContext>()));
 
         return services;
     }
