@@ -23,7 +23,7 @@ public class Teacher : IdentityBase
         _subjects.Add(subject);
     }
 
-    private void AddTeachingSubject(Subject subject)
+    public void AddTeachingSubject(Subject subject)
     {
         if (
             subject != null

@@ -33,8 +33,8 @@ public class Lesson : ValueObject
         TimeOnly startTime,
         TimeOnly endTime
         )
-        => (SubjectName, Teacher, EducationalClass, StartTime, EndTime)
-            = (subject.ToString(), teacher, educationalClass, startTime, endTime);
+        => (SubjectName, _subject, Teacher, EducationalClass, StartTime, EndTime)
+            = (subject.ToString(), subject, teacher, educationalClass, startTime, endTime);
 
     protected override IEnumerable<object> GetEqualityComponents()
     {
