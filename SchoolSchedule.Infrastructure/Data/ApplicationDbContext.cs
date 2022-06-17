@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Reflection;
+﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore;
+using SchoolSchedule.Application.Contracts;
 
 namespace SchoolSchedule.Infrastructure.Data;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
-        => await base.SaveChangesAsync(cancellationToken);    
+        => await base.SaveChangesAsync(cancellationToken);
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
