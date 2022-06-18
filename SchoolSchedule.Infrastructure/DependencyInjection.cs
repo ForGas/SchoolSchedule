@@ -16,6 +16,8 @@ public static class DependencyInjection
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
                 .UseLazyLoadingProxies());
 
+        services.AddTransient<IApplicationDbContext, ApplicationDbContext>();
+
         return services;
     }
 
