@@ -23,7 +23,16 @@ public class EducationalClass : IdentityBase
             )
         {
             _students.AddRange(students);
+
+            foreach (var student in students)
+            {
+                student.EnrollInClass(this);
+            }
+
+            return;
         }
+
+        throw new ArgumentException(nameof(this.EnrollmentStudentsInClass), nameof(students));
     }
 
     public void EnrollmentStudent(Student student)
@@ -35,7 +44,11 @@ public class EducationalClass : IdentityBase
             )
         {
             _students.Add(student);
+            student.EnrollInClass(this);
+            return;
         }
+
+        throw new ArgumentException(nameof(this.EnrollmentStudent), nameof(student));
     }
 
     public void AppointClassroomTeacher(Teacher classroomTeacher)
@@ -43,9 +56,10 @@ public class EducationalClass : IdentityBase
         if (classroomTeacher.EducationalClass == null)
         {
             ClassroomTeacher = classroomTeacher;
+            return;
         }
 
-        throw new ArgumentException(nameof(classroomTeacher.EducationalClass));
+        throw new ArgumentException(nameof(this.AppointClassroomTeacher), nameof(classroomTeacher.EducationalClass));
     }
 }
 

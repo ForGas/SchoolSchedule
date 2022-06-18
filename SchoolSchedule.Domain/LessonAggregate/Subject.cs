@@ -16,7 +16,7 @@ public class Subject : ValueObject
 
     public override string ToString() => Name;
 
-    public static implicit operator string(Subject lesson) => lesson.ToString();
+    public static implicit operator string(Subject Sesson) => Sesson.ToString();
 
     public static explicit operator Subject(string name)
         => !Subjects.Contains(new Subject(name))

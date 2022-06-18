@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSchedule.Api", "SchoolSchedule.Api\SchoolSchedule.Api.csproj", "{CC11BBA8-1F02-4570-8036-23D0CB10503E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolSchedule.Api", "SchoolSchedule.Api\SchoolSchedule.Api.csproj", "{CC11BBA8-1F02-4570-8036-23D0CB10503E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSchedule.Domain", "SchoolSchedule.Domain\SchoolSchedule.Domain.csproj", "{2AC7135F-07CB-4FCC-A89F-60A2DFAA50E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolSchedule.Domain", "SchoolSchedule.Domain\SchoolSchedule.Domain.csproj", "{2AC7135F-07CB-4FCC-A89F-60A2DFAA50E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSchedule.Application", "SchoolSchedule.Application\SchoolSchedule.Application.csproj", "{5192D52C-FBFA-4133-A759-E439672D6C64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolSchedule.Application", "SchoolSchedule.Application\SchoolSchedule.Application.csproj", "{5192D52C-FBFA-4133-A759-E439672D6C64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSchedule.Infrastructure", "SchoolSchedule.Infrastructure\SchoolSchedule.Infrastructure.csproj", "{71510997-0BF8-40EA-875E-49AB22BCDFD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchoolSchedule.Infrastructure", "SchoolSchedule.Infrastructure\SchoolSchedule.Infrastructure.csproj", "{71510997-0BF8-40EA-875E-49AB22BCDFD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSchedule.ConsoleClient", "SchoolSchedule.ConsoleClient\SchoolSchedule.ConsoleClient.csproj", "{8EC80CEA-3BED-44AE-9964-4593A997BD32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{71510997-0BF8-40EA-875E-49AB22BCDFD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71510997-0BF8-40EA-875E-49AB22BCDFD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71510997-0BF8-40EA-875E-49AB22BCDFD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EC80CEA-3BED-44AE-9964-4593A997BD32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC80CEA-3BED-44AE-9964-4593A997BD32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC80CEA-3BED-44AE-9964-4593A997BD32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC80CEA-3BED-44AE-9964-4593A997BD32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
