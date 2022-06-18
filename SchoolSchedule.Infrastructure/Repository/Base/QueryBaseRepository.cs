@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolSchedule.Application.Contracts;
-using SchoolSchedule.Domain.Common;
+using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Infrastructure.Data;
 using System.Linq.Expressions;
 

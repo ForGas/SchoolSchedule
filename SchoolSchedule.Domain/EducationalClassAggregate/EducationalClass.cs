@@ -1,4 +1,4 @@
-﻿using SchoolSchedule.Domain.Common;
+﻿using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Domain.LessonAggregate;
 
 namespace SchoolSchedule.Domain.EducationalClassAggregate;

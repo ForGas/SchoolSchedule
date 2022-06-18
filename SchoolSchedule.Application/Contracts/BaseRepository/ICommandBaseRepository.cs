@@ -1,4 +1,4 @@
-﻿using SchoolSchedule.Domain.Common;
+﻿using SchoolSchedule.Domain.SeedWork;
 
 namespace SchoolSchedule.Application.Contracts;
 

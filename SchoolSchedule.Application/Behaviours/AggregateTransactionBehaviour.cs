@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using SchoolSchedule.Application.Contracts;
 
-namespace SchoolSchedule.Application;
+namespace SchoolSchedule.Application.Behaviours;
 
 public class AggregateTransactionBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IAggregateTransactionCommand<TResponse>

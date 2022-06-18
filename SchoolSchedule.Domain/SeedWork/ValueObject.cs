@@ -1,4 +1,4 @@
-﻿namespace SchoolSchedule.Domain.Common;
+﻿namespace SchoolSchedule.Domain.SeedWork;
 
 #nullable disable
 public abstract class ValueObject

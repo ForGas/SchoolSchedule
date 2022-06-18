@@ -11,22 +11,9 @@ namespace SchoolSchedule.Infrastructure.Repository
 
         public async Task<Guid> EnrollmentInSchoolAsync(Student student)
         {
-            var transaction = await _context.Database.BeginTransactionAsync();
-
-            try
-            {
-                var result = await SaveAsync(student);
-                _ = await SaveChangesAsync(new CancellationToken());
-                await transaction.CommitAsync();
-
-                return result;
-            }
-            catch (Exception ex)
-            {
-                await transaction.RollbackAsync();
-                throw;
-            }
-
+            var result = await SaveAsync(student);
+            _ = await SaveChangesAsync(new CancellationToken());
+            return result;
         }
     }
 }

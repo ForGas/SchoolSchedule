@@ -1,6 +1,6 @@
 ﻿using SchoolSchedule.Domain.LessonAggregate;
 
-namespace SchoolSchedule.Domain.Common;
+namespace SchoolSchedule.Domain.SeedWork;
 
 public static class Extensions
 {

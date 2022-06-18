@@ -1,3 +1,6 @@
-﻿namespace SchoolSchedule.Domain.Common;
+﻿namespace SchoolSchedule.Domain.SeedWork;
 
-public interface IAggregateRoot { }
+public interface IAggregateRoot 
+{ 
+    Guid Id { get; }
+}

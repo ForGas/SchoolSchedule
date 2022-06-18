@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -9,7 +8,6 @@ using SchoolSchedule.Api.Filters;
 using SchoolSchedule.Application;
 using SchoolSchedule.Infrastructure;
 using SchoolSchedule.Infrastructure.Data;
-using System.Text.Json.Serialization.Metadata;
 
 var builder = WebApplication.CreateBuilder(args);
 
