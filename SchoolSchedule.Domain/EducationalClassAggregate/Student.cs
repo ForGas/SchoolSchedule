@@ -25,6 +25,6 @@ public class Student : IdentityBase
             return;
         }
 
-        throw new ArgumentException(nameof(this.EnrollInClass), nameof(@class));
+        throw new ArgumentNullException(nameof(this.EnrollInClass), nameof(@class));
     }
 }

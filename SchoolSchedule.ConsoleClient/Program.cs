@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using SchoolSchedule.Domain.EducationalClassAggregate;
 using SchoolSchedule.Domain.LessonAggregate;
+using SchoolSchedule.Domain.SchoolDayScheduleAggregate;
 
 Console.WriteLine("Hello, World!");
 
@@ -31,6 +32,8 @@ var lesson1 = new Lesson(subject, teacher, @class1, new TimeOnly(12, 0), new Tim
 var lesson2 = new Lesson(subject, teacher, @class1, new TimeOnly(12, 0), new TimeOnly(12, 45));
 
 Test<Lesson>.Equals(lesson1, lesson2);
+
+//var classroom = new Classroom();
 
 Console.ReadLine();
 

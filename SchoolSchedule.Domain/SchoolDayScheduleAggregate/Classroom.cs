@@ -5,7 +5,14 @@ namespace SchoolSchedule.Domain.SchoolDayScheduleAggregate;
 
 public class Classroom : IdentityBase
 {
-    public int Number { get; set; }
-    public virtual List<Lesson> Lessons { get; set; } = null!;
+    private readonly HashSet<Lesson> _lessons = new();
+
+    public Classroom(int number)
+        => Number = number;
+
+    protected Classroom() { }
+
+    public int Number { get; init; }
+    public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;
 }
 
