@@ -20,7 +20,7 @@ public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommand,
 
     public async Task<Guid> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
     {
-        var student = new Student(request.FullName, request.BirthYear);
+        var student = new Student(request.FullName, DateOnly.FromDateTime(request.BirthYear));
         var result = await _studentRepository.EnrollmentInSchoolAsync(student);
 
         return result;

@@ -7,12 +7,12 @@ public class Student : IdentityBase
     private EducationalClass _educationalClass;
 
     public string FullName { get; init; }
-    public DateTime BirthYear { get; init; }
+    public DateOnly BirthYear { get; init; }
 
     public Guid EducationalClassId { get; set; }
     public virtual EducationalClass EducationalClass => _educationalClass;
 
-    public Student(string fullName, DateTime birthYear)
+    public Student(string fullName, DateOnly birthYear)
         => (FullName, BirthYear) = (fullName, birthYear);
 
     protected Student() { }

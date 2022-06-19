@@ -29,8 +29,4 @@
     <ProjectReference Include="..\SchoolSchedule.Application\SchoolSchedule.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
