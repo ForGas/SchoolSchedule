@@ -9,9 +9,11 @@ public class EducationalClass : IdentityBase
 
     public string Name { get; init; } = null!;
     public virtual IReadOnlyCollection<Student> Students => _students;
-    public virtual Teacher ClassroomTeacher { get; private set; } = null!;
+    //public virtual Teacher ClassroomTeacher { get; private set; } = null!;
 
     public EducationalClass(string name) => Name = name;
+
+    protected EducationalClass() { }
 
     public void EnrollmentStudentsInClass(List<Student> students)
     {
@@ -55,7 +57,7 @@ public class EducationalClass : IdentityBase
     {
         if (classroomTeacher.EducationalClass == null)
         {
-            ClassroomTeacher = classroomTeacher;
+            //ClassroomTeacher = classroomTeacher;
             return;
         }
 

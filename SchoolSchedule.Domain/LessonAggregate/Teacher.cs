@@ -8,8 +8,12 @@ public class Teacher : IdentityBase
     private readonly HashSet<Subject> _subjects = new();
 
     public string FullName { get; init; }
-    public virtual IReadOnlyCollection<Subject> Subjects => _subjects;
-    public virtual EducationalClass? EducationalClass { get; protected set; }
+    public IReadOnlyCollection<Subject> Subjects => _subjects;
+
+    public Guid? EducationalClassId { get; set; }
+    public virtual EducationalClass? EducationalClass { get; private set; }
+
+    protected Teacher() { }
 
     public Teacher(List<Subject> subjects, string fullName)
     {

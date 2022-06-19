@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SchoolSchedule.Application.Common;
 using SchoolSchedule.Application.Contracts;
+using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Infrastructure.Data;
 using SchoolSchedule.Infrastructure.Repository;
 
@@ -11,12 +13,16 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<ApplicationDbContext>(options =>
+        services.AddEntityFrameworkSqlServer()
+            .AddDbContext<ApplicationDbContext>(options =>
+            {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
-                .UseLazyLoadingProxies());
+                    .UseLazyLoadingProxies();
+            }, ServiceLifetime.Scoped);
 
-        services.AddTransient<IApplicationDbContext, ApplicationDbContext>();
+        services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
+        services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
 
         return services;
     }

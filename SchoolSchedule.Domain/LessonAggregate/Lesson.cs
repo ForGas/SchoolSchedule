@@ -36,6 +36,8 @@ public class Lesson : ValueObject
         => (SubjectName, _subject, Teacher, EducationalClass, StartTime, EndTime)
             = (subject.ToString(), subject, teacher, educationalClass, startTime, endTime);
 
+    protected Lesson() { }
+
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return SubjectName;

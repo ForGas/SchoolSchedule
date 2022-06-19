@@ -6,9 +6,9 @@ Console.WriteLine("Hello, World!");
 
 
 
-var student1 = new Student("Test1", DateOnly.FromDateTime(DateTime.UtcNow));
-var student2 = new Student("Test2", DateOnly.FromDateTime(DateTime.UtcNow));
-var student3 = new Student("Test3", DateOnly.FromDateTime(DateTime.UtcNow));
+var student1 = new Student("Test1", DateTime.UtcNow);
+var student2 = new Student("Test2", DateTime.UtcNow);
+var student3 = new Student("Test3", DateTime.UtcNow);
 
 var @class1 = new EducationalClass("1a");
 var @class2 = new EducationalClass("2a");
