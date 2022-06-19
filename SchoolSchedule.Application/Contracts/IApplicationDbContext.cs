@@ -10,7 +10,7 @@ public interface IApplicationDbContext
     DatabaseFacade Database { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
-    //DbSet<Student> Students { get; set; }
-    //DbSet<EducationalClass> EducationalClasses { get; set; }
-    //DbSet<Teacher> Teachers { get; set; }
+    DbSet<Student> Students { get; set; }
+    DbSet<EducationalClass> EducationalClasses { get; set; }
+    DbSet<Teacher> Teachers { get; set; }
 }

@@ -18,8 +18,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
             => (_dispatcher) = (dispatcher);
 
     public DbSet<Student> Students { get; set; }
-    //public DbSet<EducationalClass> EducationalClasses { get; set; } = null!;
-    //public DbSet<Teacher> Teachers { get; set; } = null!;
+    public DbSet<EducationalClass> EducationalClasses { get; set; } = null!;
+    public DbSet<Teacher> Teachers { get; set; } = null!;
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {
