@@ -5,7 +5,7 @@ namespace SchoolSchedule.Domain.SeedWork;
 
 public abstract class IdentityBase : IAggregateRoot
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public Guid Id { get; init; } = Guid.NewGuid();
 
     [NotMapped]
     private readonly ConcurrentQueue<IDomainEvent> _domainEvents = new();
