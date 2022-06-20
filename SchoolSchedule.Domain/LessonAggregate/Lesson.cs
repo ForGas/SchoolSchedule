@@ -48,5 +48,15 @@ public class Lesson : IdentityBase
 
     protected Lesson() { }
 
-    public void SetLessonDaySchedule(bool active) => _isActive = active;
+    public void SetIsLessonDaySchedule(bool active) => _isActive = active;
+
+    public void SetSchoolDaySchedule(SchoolDaySchedule schoolDaySchedule)
+    {
+        if (schoolDaySchedule.Lessons.Any(x => x == this))
+        {
+            _schoolDaySchedule = schoolDaySchedule;
+        }
+
+        throw new ArgumentException(nameof(this.SetSchoolDaySchedule), nameof(schoolDaySchedule.Lessons));
+    }
 }

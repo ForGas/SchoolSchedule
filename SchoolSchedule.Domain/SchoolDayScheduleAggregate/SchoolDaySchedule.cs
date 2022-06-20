@@ -19,7 +19,6 @@ public class SchoolDaySchedule : IdentityBase
 
     public void SetActiveSchoolDaySchedule(bool active) => _isActive = active;
 
-
     private void AddLessonForDaySchedule(Lesson lesson)
     {
         if (
@@ -28,6 +27,7 @@ public class SchoolDaySchedule : IdentityBase
             )
         {
             _lessons.Add(lesson);
+            lesson.SetSchoolDaySchedule(this);
             return;
         }
 
