@@ -1,19 +1,26 @@
 ﻿using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Domain.EducationalClassAggregate;
+using SchoolSchedule.Domain.SchoolDayScheduleAggregate;
 
 namespace SchoolSchedule.Domain.LessonAggregate;
 
 public class Lesson : IdentityBase
 {
+    private bool _isActive;
     private readonly TimeOnly _startTime;
     private readonly TimeOnly _endTime;
     private readonly Teacher _teacher = null!;
     private readonly Subject _subject = null!;
+    private SchoolDaySchedule _schoolDaySchedule;
 
     public string SubjectName { get; init; }
     public Classroom Classroom { get; init; }
+    public bool IsActive => _isActive;
+    public Subject Subject => _subject;
 
     public virtual EducationalClass EducationalClass { get; init; }
+
+    public virtual SchoolDaySchedule SchoolDaySchedule => _schoolDaySchedule;
 
     public virtual Teacher Teacher
     {
@@ -36,9 +43,10 @@ public class Lesson : IdentityBase
         TimeOnly startTime,
         TimeOnly endTime
         )
-        => (SubjectName, _subject, Teacher, EducationalClass, Classroom, StartTime, EndTime)
-            = (subject.ToString(), subject, teacher, educationalClass, classroom, startTime, endTime);
+        => (SubjectName, _subject, Teacher, EducationalClass, Classroom, StartTime, EndTime, _isActive)
+            = (subject.ToString(), subject, teacher, educationalClass, classroom, startTime, endTime, true);
 
     protected Lesson() { }
-}
 
+    public void SetLessonDaySchedule(bool active) => _isActive = active;
+}

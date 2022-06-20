@@ -7,6 +7,7 @@ namespace SchoolSchedule.Domain.LessonAggregate;
 public class Teacher : IdentityBase
 {
     private readonly HashSet<Subject> _subjects = new();
+    private readonly List<Lesson> _lessons = new();
     private EducationalClass? _educationalClass;
 
     public string FullName { get; init; }
@@ -14,6 +15,7 @@ public class Teacher : IdentityBase
 
     public Guid? EducationalClassId { get; set; }
     public virtual EducationalClass? EducationalClass => _educationalClass;
+    public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;
 
     protected Teacher() { }
 

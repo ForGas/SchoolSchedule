@@ -18,5 +18,20 @@ public class SchoolDaySchedule : IdentityBase
     public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;
 
     public void SetActiveSchoolDaySchedule(bool active) => _isActive = active;
+
+
+    private void AddLessonForDaySchedule(Lesson lesson)
+    {
+        if (
+            lesson != null
+            && _lessons.All(x => x.Id != x.Id)
+            )
+        {
+            _lessons.Add(lesson);
+            return;
+        }
+
+        throw new ArgumentException(nameof(this.AddLessonForDaySchedule), nameof(lesson));
+    }
 }
 
