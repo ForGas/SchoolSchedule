@@ -3,7 +3,7 @@ using SchoolSchedule.Domain.EducationalClassAggregate;
 
 namespace SchoolSchedule.Domain.LessonAggregate;
 
-public class Lesson : ValueObject
+public class Lesson : IdentityBase
 {
     private readonly TimeOnly _startTime;
     private readonly TimeOnly _endTime;
@@ -11,6 +11,8 @@ public class Lesson : ValueObject
     private readonly Subject _subject = null!;
 
     public string SubjectName { get; init; }
+    public Classroom Classroom { get; init; }
+
     public virtual EducationalClass EducationalClass { get; init; }
 
     public virtual Teacher Teacher
@@ -30,21 +32,13 @@ public class Lesson : ValueObject
         Subject subject,
         Teacher teacher,
         EducationalClass educationalClass,
+        Classroom classroom,
         TimeOnly startTime,
         TimeOnly endTime
         )
-        => (SubjectName, _subject, Teacher, EducationalClass, StartTime, EndTime)
-            = (subject.ToString(), subject, teacher, educationalClass, startTime, endTime);
+        => (SubjectName, _subject, Teacher, EducationalClass, Classroom, StartTime, EndTime)
+            = (subject.ToString(), subject, teacher, educationalClass, classroom, startTime, endTime);
 
     protected Lesson() { }
-
-    protected override IEnumerable<object> GetEqualityComponents()
-    {
-        yield return SubjectName;
-        yield return Teacher.FullName;
-        yield return EducationalClass.Name;
-        yield return StartTime;
-        yield return EndTime;
-    }
 }
 
