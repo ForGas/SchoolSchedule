@@ -36,18 +36,3 @@ public class AggregateTransactionBehaviour<TRequest, TResponse> : IPipelineBehav
         }
     }
 }
-
-
-
-public interface IAggregateTransactionCommand<out TResponse> : ICommand<TResponse>
-{ 
-    
-}
-
-public interface ICommand<out TResponse> : IRequest<TResponse>
-{
-}
-
-public interface IQuery<out TResponse> : IRequest<TResponse>
-{
-}

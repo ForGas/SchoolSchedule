@@ -12,7 +12,6 @@ namespace SchoolSchedule.Infrastructure.Repository
         public async Task<Guid> EnrollmentInSchoolAsync(Student student)
         {
             var result = await SaveAsync(student);
-            _ = await SaveChangesAsync(new CancellationToken());
             return result;
         }
     }

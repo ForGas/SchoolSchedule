@@ -5,6 +5,7 @@ using SchoolSchedule.Infrastructure.Services;
 
 namespace SchoolSchedule.Infrastructure.Configurations;
 
+#nullable disable
 public class StudentModelConfiguration : IEntityTypeConfiguration<Student>
 {
     public void Configure(EntityTypeBuilder<Student> builder)
@@ -20,7 +21,7 @@ public class StudentModelConfiguration : IEntityTypeConfiguration<Student>
             .IsRequired();
         builder.Ignore(x => x.DomainEvents);
 
-        var navigation = builder.Metadata.FindNavigation(nameof(Student.EducationalClass));
-        navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
+        builder.Metadata.FindNavigation(nameof(Student.EducationalClass))
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

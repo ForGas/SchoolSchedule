@@ -4,7 +4,7 @@ using SchoolSchedule.Domain.EducationalClassAggregate;
 
 namespace SchoolSchedule.Application.StudentContext.Commands.CreateStudent;
 
-public class CreateStudentCommand : IRequest<Guid>
+public class CreateStudentCommand : IAggregateTransactionCommand<Guid>
 {
     public string FullName { get; set; } = null!;
     public DateTime BirthYear { get; set; }
@@ -22,6 +22,8 @@ public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommand,
     {
         var student = new Student(request.FullName, DateOnly.FromDateTime(request.BirthYear));
         var result = await _studentRepository.EnrollmentInSchoolAsync(student);
+
+        _ = _studentRepository.SaveChangesAsync(cancellationToken);
 
         return result;
     }

@@ -1,12 +1,19 @@
-﻿using SchoolSchedule.Domain.SeedWork;
+﻿using SchoolSchedule.Domain.EducationalClassAggregate.Events;
+using SchoolSchedule.Domain.SeedWork;
 
 namespace SchoolSchedule.Domain.EducationalClassAggregate;
 
 public class Student : IdentityBase
 {
     private EducationalClass _educationalClass;
+    private readonly string _fullName;
 
-    public string FullName { get; init; }
+    public string FullName 
+    {
+        get => _fullName;
+        init => _fullName = !string.IsNullOrEmpty(value) ? value : throw new ArgumentNullException(nameof(value));
+    }
+
     public DateOnly BirthYear { get; init; }
 
     public Guid EducationalClassId { get; set; }
@@ -22,6 +29,7 @@ public class Student : IdentityBase
         if (@class != null)
         {
             _educationalClass = @class;
+            PublishEvent(new StydentAdmissioned(this));
             return;
         }
 
