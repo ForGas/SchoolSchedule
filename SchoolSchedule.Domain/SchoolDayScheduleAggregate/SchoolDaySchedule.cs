@@ -36,10 +36,9 @@ public class SchoolDaySchedule : IdentityBase
     }
 
     private bool IsTimeCorrect(Lesson lesson)
-    {
-        return !_lessons.Any(x =>
+        => !_lessons.Any(x =>
             (x.EndTime >= lesson.EndTime && lesson.EndTime <= x.StartTime)
             || (x.EndTime >= lesson.StartTime && lesson.StartTime <= x.StartTime));
-    }
+    
 }
 
