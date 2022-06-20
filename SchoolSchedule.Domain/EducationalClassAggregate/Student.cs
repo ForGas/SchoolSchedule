@@ -1,5 +1,4 @@
-﻿using SchoolSchedule.Domain.EducationalClassAggregate.Events;
-using SchoolSchedule.Domain.SeedWork;
+﻿using SchoolSchedule.Domain.SeedWork;
 
 namespace SchoolSchedule.Domain.EducationalClassAggregate;
 
@@ -29,7 +28,6 @@ public class Student : IdentityBase
         if (@class != null)
         {
             _educationalClass = @class;
-            PublishEvent(new StydentAdmissioned(this));
             return;
         }
 

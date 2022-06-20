@@ -1,10 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SchoolSchedule.Domain.SeedWork;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using SchoolSchedule.Domain.SeedWork;
 
 namespace SchoolSchedule.Domain.LessonAggregate;
 
-//[Owned]
 public class Subject : ValueObject
 {
     public string Name { get; init; }

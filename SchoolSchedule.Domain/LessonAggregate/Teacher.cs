@@ -1,10 +1,9 @@
 ﻿using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Domain.EducationalClassAggregate;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolSchedule.Domain.LessonAggregate;
 
-public class Teacher : IdentityBase
+public class Teacher : AggregateRoot
 {
     private readonly HashSet<Subject> _subjects = new();
     private readonly List<Lesson> _lessons = new();

@@ -3,7 +3,7 @@ using SchoolSchedule.Domain.SeedWork;
 
 namespace SchoolSchedule.Domain.SchoolDayScheduleAggregate;
 
-public class SchoolDaySchedule : IdentityBase
+public class SchoolDaySchedule : AggregateRoot
 {
     private bool _isActive;
     private readonly List<Lesson> _lessons = new();

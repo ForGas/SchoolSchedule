@@ -4,7 +4,7 @@ using SchoolSchedule.Domain.SchoolDayScheduleAggregate;
 
 namespace SchoolSchedule.Domain.LessonAggregate;
 
-public class Lesson : IdentityBase
+public class Lesson : AggregateRoot
 {
     private bool _isActive;
     private readonly TimeOnly _startTime;

@@ -1,9 +1,10 @@
 ﻿using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Domain.LessonAggregate;
+using SchoolSchedule.Domain.EducationalClassAggregate.Events;
 
 namespace SchoolSchedule.Domain.EducationalClassAggregate;
 
-public class EducationalClass : IdentityBase
+public class EducationalClass : AggregateRoot
 {
     private readonly List<Lesson> _lessons = new();
     private readonly List<Student> _students = new();
@@ -33,6 +34,7 @@ public class EducationalClass : IdentityBase
             foreach (var student in students)
             {
                 student.EnrollInClass(this);
+                PublishEvent(new StydentAdmissioned(student));
             }
 
             return;
