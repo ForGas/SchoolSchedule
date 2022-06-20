@@ -7,8 +7,8 @@ public static class SchoolDayScheduleFactory
 {
     public static SchoolDaySchedule CreateSchoolSchedule(SchoolScheduleDto schoolScheduleDto)
     {
-        var schoolSchedule = new SchoolDaySchedule();
+        //var schoolSchedule = new SchoolDaySchedule();
 
-        return schoolSchedule;
+        return null;
     }
 }

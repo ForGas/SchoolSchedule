@@ -1,12 +1,16 @@
-﻿using SchoolSchedule.Domain.SeedWork;
+﻿using Microsoft.EntityFrameworkCore;
+using SchoolSchedule.Domain.SeedWork;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolSchedule.Domain.LessonAggregate;
 
+//[Owned]
 public class Subject : ValueObject
 {
     public string Name { get; init; }
     static Subject() { }
     private Subject(string name) => Name = name;
+    protected Subject() { }
 
     public static Subject Math => new("Math");
     public static Subject Physics => new("Physics");

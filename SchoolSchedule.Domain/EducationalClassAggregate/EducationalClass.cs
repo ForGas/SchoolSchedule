@@ -6,10 +6,11 @@ namespace SchoolSchedule.Domain.EducationalClassAggregate;
 public class EducationalClass : IdentityBase
 {
     private readonly List<Student> _students = new();
+    private Teacher _classroomTeacher;
 
     public string Name { get; init; } = null!;
     public virtual IReadOnlyCollection<Student> Students => _students;
-    //public virtual Teacher ClassroomTeacher { get; private set; } = null!;
+    public virtual Teacher ClassroomTeacher => _classroomTeacher;
 
     public EducationalClass(string name) => Name = name;
 
@@ -55,9 +56,12 @@ public class EducationalClass : IdentityBase
 
     public void AppointClassroomTeacher(Teacher classroomTeacher)
     {
-        if (classroomTeacher.EducationalClass == null)
+        if (
+            classroomTeacher.EducationalClass == null 
+            && classroomTeacher.EducationalClassId == null
+            )
         {
-            //ClassroomTeacher = classroomTeacher;
+            _classroomTeacher = classroomTeacher;
             return;
         }
 

@@ -1,17 +1,19 @@
 ﻿using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Domain.EducationalClassAggregate;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolSchedule.Domain.LessonAggregate;
 
 public class Teacher : IdentityBase
 {
     private readonly HashSet<Subject> _subjects = new();
+    private EducationalClass? _educationalClass;
 
     public string FullName { get; init; }
-    public IReadOnlyCollection<Subject> Subjects => _subjects;
+    public IReadOnlyCollection<Subject> Subjects => _subjects.ToList();
 
     public Guid? EducationalClassId { get; set; }
-    public virtual EducationalClass? EducationalClass { get; private set; }
+    public virtual EducationalClass? EducationalClass => _educationalClass;
 
     protected Teacher() { }
 

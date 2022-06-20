@@ -16,7 +16,6 @@ public class EducationalClassModelConfiguration : IEntityTypeConfiguration<Educa
 
         builder.Property(x => x.Id);
         builder.Property(x => x.Name).HasMaxLength(64).IsRequired();
-        //builder.Property(x => x.ClassroomTeacher);
         builder.Ignore(x => x.DomainEvents);
 
         builder
@@ -24,10 +23,13 @@ public class EducationalClassModelConfiguration : IEntityTypeConfiguration<Educa
             .WithOne(ct => ct.EducationalClass)
             .HasForeignKey(ct => ct.EducationalClassId);
 
-        var navigation = builder.Metadata.FindNavigation(nameof(EducationalClass.Students));
-        navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
+        builder.Metadata.FindNavigation(nameof(EducationalClass.Students))
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
 
-        //builder.HasOne(ec => ec.ClassroomTeacher).WithOne(ct => ct.EducationalClass)
-        //        .HasForeignKey<Teacher>(ct => ct.EducationalClassId);
+        builder.HasOne(ec => ec.ClassroomTeacher).WithOne(ct => ct.EducationalClass)
+                .HasForeignKey<Teacher>(ct => ct.EducationalClassId);
+
+        builder.Metadata.FindNavigation(nameof(EducationalClass.ClassroomTeacher))
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }
