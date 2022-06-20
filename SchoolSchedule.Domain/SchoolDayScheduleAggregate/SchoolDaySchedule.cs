@@ -24,6 +24,7 @@ public class SchoolDaySchedule : IdentityBase
         if (
             lesson != null
             && _lessons.All(x => x.Id != x.Id)
+            && IsTimeCorrect(lesson)
             )
         {
             _lessons.Add(lesson);
@@ -32,6 +33,13 @@ public class SchoolDaySchedule : IdentityBase
         }
 
         throw new ArgumentException(nameof(this.AddLessonForDaySchedule), nameof(lesson));
+    }
+
+    private bool IsTimeCorrect(Lesson lesson)
+    {
+        return !_lessons.Any(x =>
+            (x.EndTime >= lesson.EndTime && lesson.EndTime <= x.StartTime)
+            || (x.EndTime >= lesson.StartTime && lesson.StartTime <= x.StartTime));
     }
 }
 
