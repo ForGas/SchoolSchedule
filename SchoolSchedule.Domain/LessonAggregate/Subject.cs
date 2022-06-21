@@ -1,4 +1,5 @@
-﻿using SchoolSchedule.Domain.SeedWork;
+﻿using SchoolSchedule.Domain.Common;
+using SchoolSchedule.Domain.SeedWork;
 
 namespace SchoolSchedule.Domain.LessonAggregate;
 
@@ -10,11 +11,11 @@ public class Subject : ValueObject
     protected Subject() { }
     private Subject(string name) => Name = name;
 
-    public static Subject Math => new("Math");
-    public static Subject Physics => new("Physics");
-    public static Subject Literature => new("Literature");
-    public static Subject ComputerScience => new("ComputerScience");
-    public static Subject PhysicalEducation => new("PhysicalEducation");
+    public static Subject Math => new(Settings.COMPUTERSCIENCE_SUBJECT_NAME);
+    public static Subject Physics => new(Settings.PHYSICS_SUBJECT_NAME);
+    public static Subject Literature => new(Settings.LITERATURE_SUBJECT_NAME);
+    public static Subject ComputerScience => new(Settings.COMPUTERSCIENCE_SUBJECT_NAME);
+    public static Subject PhysicalEducation => new(Settings.PHYSICALEDUCATION_SUBJECT_NAME);
 
     public override string ToString() => Name;
 
