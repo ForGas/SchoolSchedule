@@ -15,10 +15,8 @@ public class EducationalClass : AggregateRoot
     protected EducationalClass() { }
     public EducationalClass(string name) => Name = name;
 
-
     [NotMapped]
     public override AggregateType RootType => AggregateType.EducationalClass;
-
     public string Name { get; init; } = null!;
     public virtual IReadOnlyCollection<Student> Students => _students;
     public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;

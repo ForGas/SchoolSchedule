@@ -12,6 +12,7 @@ public class Teacher : AggregateRoot
     private EducationalClass? _educationalClass;
 
     protected Teacher() { }
+
     public Teacher(List<Subject> subjects, string fullName)
     {
         (FullName) = (fullName);
