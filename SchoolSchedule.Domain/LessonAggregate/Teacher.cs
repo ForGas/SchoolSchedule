@@ -1,6 +1,7 @@
 ﻿using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Domain.EducationalClassAggregate;
 using SchoolSchedule.Domain.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolSchedule.Domain.LessonAggregate;
 
@@ -10,15 +11,7 @@ public class Teacher : AggregateRoot
     private readonly List<Lesson> _lessons = new();
     private EducationalClass? _educationalClass;
 
-    public string FullName { get; init; }
-    public IReadOnlyCollection<Subject> Subjects => _subjects.ToList();
-
-    public Guid? EducationalClassId { get; set; }
-    public virtual EducationalClass? EducationalClass => _educationalClass;
-    public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;
-
     protected Teacher() { }
-
     public Teacher(List<Subject> subjects, string fullName)
     {
         (FullName) = (fullName);
@@ -30,6 +23,14 @@ public class Teacher : AggregateRoot
         (FullName) = (fullName);
         _subjects.Add(subject);
     }
+
+    [NotMapped]
+    public override AggregateType RootType => AggregateType.Teacher;
+    public string FullName { get; init; }
+    public IReadOnlyCollection<Subject> Subjects => _subjects.ToList();
+    public Guid? EducationalClassId { get; set; }
+    public virtual EducationalClass? EducationalClass => _educationalClass;
+    public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;
 
     public void AddTeachingSubject(Subject subject)
     {

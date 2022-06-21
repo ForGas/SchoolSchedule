@@ -4,6 +4,7 @@ namespace SchoolSchedule.Domain.EducationalClassAggregate.Events;
 
 public class StydentAdmissioned : IDomainEvent
 {
+    public Guid EventId { get; init; } = Guid.NewGuid();
     public Guid StudentId { get; init; }
     public Guid EducationalClassId { get; init; }
     public DateTime CreatedAt { get; init; } = DateTime.Now;

@@ -5,9 +5,10 @@ namespace SchoolSchedule.Domain.LessonAggregate;
 public class Subject : ValueObject
 {
     public string Name { get; init; }
+
     static Subject() { }
-    private Subject(string name) => Name = name;
     protected Subject() { }
+    private Subject(string name) => Name = name;
 
     public static Subject Math => new("Math");
     public static Subject Physics => new("Physics");
@@ -17,7 +18,7 @@ public class Subject : ValueObject
 
     public override string ToString() => Name;
 
-    public static implicit operator string(Subject Sesson) => Sesson.ToString();
+    public static implicit operator string(Subject subject) => subject.ToString();
 
     public static explicit operator Subject(string name)
         => !Subjects.Contains(new Subject(name))

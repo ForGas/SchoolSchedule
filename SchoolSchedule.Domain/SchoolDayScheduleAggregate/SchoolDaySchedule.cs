@@ -1,5 +1,7 @@
-﻿using SchoolSchedule.Domain.LessonAggregate;
+﻿using SchoolSchedule.Domain.Common;
+using SchoolSchedule.Domain.LessonAggregate;
 using SchoolSchedule.Domain.SeedWork;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolSchedule.Domain.SchoolDayScheduleAggregate;
 
@@ -8,11 +10,13 @@ public class SchoolDaySchedule : AggregateRoot
     private bool _isActive;
     private readonly List<Lesson> _lessons = new();
 
+    protected SchoolDaySchedule() { }
     public SchoolDaySchedule(DateOnly day)
         => (Day, _isActive) = (day, true);
 
-    protected SchoolDaySchedule() { }
 
+    [NotMapped]
+    public override AggregateType RootType => AggregateType.SchoolDaySchedule;
     public DateOnly Day { get; init; }
     public bool IsActive => _isActive;
     public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;

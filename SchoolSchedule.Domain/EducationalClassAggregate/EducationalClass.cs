@@ -2,6 +2,7 @@
 using SchoolSchedule.Domain.LessonAggregate;
 using SchoolSchedule.Domain.EducationalClassAggregate.Events;
 using SchoolSchedule.Domain.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolSchedule.Domain.EducationalClassAggregate;
 
@@ -11,15 +12,17 @@ public class EducationalClass : AggregateRoot
     private readonly List<Student> _students = new();
     private Teacher? _classroomTeacher;
 
+    protected EducationalClass() { }
+    public EducationalClass(string name) => Name = name;
+
+
+    [NotMapped]
+    public override AggregateType RootType => AggregateType.EducationalClass;
+
     public string Name { get; init; } = null!;
     public virtual IReadOnlyCollection<Student> Students => _students;
     public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;
-
     public virtual Teacher? ClassroomTeacher => _classroomTeacher;
-
-    public EducationalClass(string name) => Name = name;
-
-    protected EducationalClass() { }
 
     public void EnrollmentStudentsInClass(List<Student> students)
     {
