@@ -1,5 +1,6 @@
 ﻿using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Domain.EducationalClassAggregate;
+using SchoolSchedule.Domain.Common;
 
 namespace SchoolSchedule.Domain.LessonAggregate;
 
@@ -62,6 +63,20 @@ public class Teacher : AggregateRoot
         }
 
         throw new ArgumentException(nameof(this.AddTeachingSubjects), nameof(subjects));
+    }
+
+    public void BecomeClassTeacher(EducationalClass @class)
+    {
+        if (
+            @class != null 
+            && @class.ClassroomTeacher != this
+            )
+        {
+            _educationalClass = @class;
+            return;
+        }
+
+        throw new ArgumentNullException(nameof(this.BecomeClassTeacher), nameof(@class));
     }
 }
 

@@ -3,7 +3,7 @@
 namespace SchoolSchedule.Application.Contracts;
 
 public interface ICommandBaseRepository<T>
-    where T : class, IAggregateRoot
+    where T : IdentityBase
 {
     Task<Guid> SaveAsync(T newEntity);
     Task UpdateAsync(T entity);

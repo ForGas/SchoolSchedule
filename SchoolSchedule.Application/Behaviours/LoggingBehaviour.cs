@@ -4,6 +4,7 @@ using System.Reflection;
 
 namespace SchoolSchedule.Application.Behaviours;
 
+#nullable disable
 public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> 
     where TRequest : IRequest<TResponse>
 {

@@ -4,12 +4,12 @@ namespace SchoolSchedule.Domain.LessonAggregate;
 
 public class Classroom : ValueObject
 {
-    public Classroom(int number)
+    public string Number { get; init; }
+
+    public Classroom(string number)
         => Number = number;
 
     protected Classroom() { }
-
-    public int Number { get; init; }
 
     protected override IEnumerable<object> GetEqualityComponents()
     {

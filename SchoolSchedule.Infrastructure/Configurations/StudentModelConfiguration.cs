@@ -19,7 +19,6 @@ public class StudentModelConfiguration : IEntityTypeConfiguration<Student>
             .HasConversion<DateOnlyConverter, DateOnlyComparer>()
             .HasColumnType("date")
             .IsRequired();
-        builder.Ignore(x => x.DomainEvents);
 
         builder.Metadata.FindNavigation(nameof(Student.EducationalClass))
             .SetPropertyAccessMode(PropertyAccessMode.Field);

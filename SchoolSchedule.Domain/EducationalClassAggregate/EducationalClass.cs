@@ -1,6 +1,7 @@
 ﻿using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Domain.LessonAggregate;
 using SchoolSchedule.Domain.EducationalClassAggregate.Events;
+using SchoolSchedule.Domain.Common;
 
 namespace SchoolSchedule.Domain.EducationalClassAggregate;
 
@@ -8,13 +9,13 @@ public class EducationalClass : AggregateRoot
 {
     private readonly List<Lesson> _lessons = new();
     private readonly List<Student> _students = new();
-    private Teacher _classroomTeacher;
+    private Teacher? _classroomTeacher;
 
     public string Name { get; init; } = null!;
     public virtual IReadOnlyCollection<Student> Students => _students;
     public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;
 
-    public virtual Teacher ClassroomTeacher => _classroomTeacher;
+    public virtual Teacher? ClassroomTeacher => _classroomTeacher;
 
     public EducationalClass(string name) => Name = name;
 
@@ -25,7 +26,7 @@ public class EducationalClass : AggregateRoot
         if (
             students != null
             && students.Any()
-            && students.Count <= 30
+            && students.Count <= Settings.NUMBER_SEATS_IN_CLASS
             && students.All(x => x.EducationalClass == null)
             )
         {
@@ -34,7 +35,7 @@ public class EducationalClass : AggregateRoot
             foreach (var student in students)
             {
                 student.EnrollInClass(this);
-                PublishEvent(new StydentAdmissioned(student));
+                PublishEvent(new StydentAdmissioned(student, this));
             }
 
             return;
@@ -47,7 +48,7 @@ public class EducationalClass : AggregateRoot
     {
         if (
             student != null
-            && _students.Count <= 30
+            && _students.Count <= Settings.NUMBER_SEATS_IN_CLASS
             && student.EducationalClass == null
             )
         {
@@ -67,6 +68,8 @@ public class EducationalClass : AggregateRoot
             )
         {
             _classroomTeacher = classroomTeacher;
+            _classroomTeacher.BecomeClassTeacher(this);
+            PublishEvent(new ClassTeacherAppointed(this, _classroomTeacher));
             return;
         }
 
