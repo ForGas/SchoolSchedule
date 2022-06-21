@@ -22,7 +22,10 @@ public class Student : IdentityBase
 
     public void EnrollInClass(EducationalClass @class)
     {
-        if (@class != null)
+        if (
+            @class != null
+            && @class.Students.Any(x => x == this)
+            )
         {
             _educationalClass = @class;
             return;
