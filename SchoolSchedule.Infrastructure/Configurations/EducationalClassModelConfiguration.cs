@@ -32,5 +32,8 @@ public class EducationalClassModelConfiguration : IEntityTypeConfiguration<Educa
 
         builder.Metadata.FindNavigation(nameof(EducationalClass.ClassroomTeacher))
             .SetPropertyAccessMode(PropertyAccessMode.Field);
+
+        builder.Metadata.FindNavigation(nameof(EducationalClass.Lessons))
+           .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

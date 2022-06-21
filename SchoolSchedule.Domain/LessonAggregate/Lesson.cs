@@ -33,6 +33,7 @@ public class Lesson : AggregateRoot
     public bool IsActive => _isActive;
     public Subject Subject => _subject;
     public virtual EducationalClass EducationalClass { get; init; }
+    public Guid SchoolDayScheduleId { get; protected set; }
     public virtual SchoolDaySchedule SchoolDaySchedule => _schoolDaySchedule;
     public TimeOnly StartTime { get => _startTime; init => _startTime = value; }
     public TimeOnly EndTime

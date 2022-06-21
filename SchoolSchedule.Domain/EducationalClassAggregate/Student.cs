@@ -12,7 +12,7 @@ public class Student : IdentityBase
         => (FullName, BirthYear) = (fullName, birthYear);
 
     public DateOnly BirthYear { get; init; }
-    public Guid EducationalClassId { get; set; }
+    public Guid EducationalClassId { get; protected set; }
     public virtual EducationalClass EducationalClass => _educationalClass;
     public string FullName 
     {
@@ -24,8 +24,7 @@ public class Student : IdentityBase
     {
         if (
             @class != null
-            && @class.Students.Any(x => x == this)
-            )
+            && @class.Students.Any(x => x == this))
         {
             _educationalClass = @class;
             return;
