@@ -8,13 +8,15 @@ public class Student : IdentityBase
     private readonly string _fullName;
 
     protected Student() { }
-    public Student(string fullName, DateOnly birthYear)
-        => (FullName, BirthYear) = (fullName, birthYear);
+    public Student(
+        string fullName,
+        DateOnly birthYear
+        ) => (FullName, BirthYear) = (fullName, birthYear);
 
     public DateOnly BirthYear { get; init; }
     public Guid EducationalClassId { get; protected set; }
     public virtual EducationalClass EducationalClass => _educationalClass;
-    public string FullName 
+    public string FullName
     {
         get => _fullName;
         init => _fullName = !string.IsNullOrEmpty(value) ? value : throw new ArgumentNullException(nameof(value));

@@ -13,7 +13,7 @@ public class EducationalClass : AggregateRoot
     private Teacher? _classroomTeacher;
 
     protected EducationalClass() { }
-    public EducationalClass(string name) => Name = name;
+    public EducationalClass(string name) => (Name) = (name);
 
     [NotMapped]
     public override AggregateType RootType => AggregateType.EducationalClass;
