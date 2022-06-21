@@ -18,14 +18,14 @@ public class EducationalClass : AggregateRoot
     [NotMapped]
     public override AggregateType RootType => AggregateType.EducationalClass;
     public string Name { get; init; } = null!;
-    public virtual IReadOnlyCollection<Student> Students => _students;
-    public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;
+    public virtual IReadOnlyCollection<Student> Students => _students.AsReadOnly();
+    public virtual IReadOnlyCollection<Lesson> Lessons => _lessons.AsReadOnly();
     public virtual Teacher? ClassroomTeacher => _classroomTeacher;
 
     public void EnrollmentStudentsInClass(List<Student> students)
     {
         if (
-            students != null
+            students is not null
             && students.Any()
             && students.Count <= Settings.NUMBER_SEATS_IN_CLASS
             && students.All(x => x.EducationalClass == null)
