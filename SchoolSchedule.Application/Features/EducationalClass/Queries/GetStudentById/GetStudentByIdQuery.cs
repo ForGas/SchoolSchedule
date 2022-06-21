@@ -2,7 +2,7 @@
 using MediatR;
 using SchoolSchedule.Application.Contracts;
 
-namespace SchoolSchedule.Application.StudentBoundary.Queries.GetStudentById;
+namespace SchoolSchedule.Application.Features.EducationalClass.Queries.GetStudentById;
 
 public record class GetStudentByIdQuery(Guid Id) : IRequest<StudentDto>;
 

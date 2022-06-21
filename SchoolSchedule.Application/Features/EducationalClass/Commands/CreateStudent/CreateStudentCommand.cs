@@ -2,7 +2,7 @@
 using SchoolSchedule.Application.Contracts;
 using SchoolSchedule.Domain.EducationalClassAggregate;
 
-namespace SchoolSchedule.Application.StudentBoundary.Commands.CreateStudent;
+namespace SchoolSchedule.Application.Features.EducationalClass.Commands.CreateStudent;
 
 public class CreateStudentCommand : IAggregateTransactionCommand<Guid>
 {

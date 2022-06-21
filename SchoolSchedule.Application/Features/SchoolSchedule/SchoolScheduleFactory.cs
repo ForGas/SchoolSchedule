@@ -1,7 +1,7 @@
-﻿using SchoolSchedule.Application.SchoolScheduleBoundary.Queries.GetSchoolScheduleById;
+﻿using SchoolSchedule.Application.Features.SchoolSchedule.Queries.GetSchoolScheduleById;
 using SchoolSchedule.Domain.SchoolDayScheduleAggregate;
 
-namespace SchoolSchedule.Application.SchoolScheduleBoundary;
+namespace SchoolSchedule.Application.Features.SchoolSchedule;
 
 public static class SchoolDayScheduleFactory
 {
