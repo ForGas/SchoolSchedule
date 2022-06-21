@@ -25,8 +25,8 @@ public class LessonModelConfiguration : IEntityTypeConfiguration<Lesson>
         builder.Ignore(x => x.DomainEvents);
         builder.Ignore(x => x.RootType);
 
-        builder.Metadata.FindNavigation(nameof(Lesson.IsActive))
-           .SetPropertyAccessMode(PropertyAccessMode.Field);
+        //builder.Metadata.FindNavigation(nameof(Lesson.IsActive))
+        //   .SetPropertyAccessMode(PropertyAccessMode.Field);
         builder.Metadata.FindNavigation(nameof(Lesson.SchoolDaySchedule))
            .SetPropertyAccessMode(PropertyAccessMode.Field);
 

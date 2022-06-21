@@ -71,7 +71,7 @@ public class Teacher : AggregateRoot
     {
         if (
             @class != null 
-            && @class.ClassroomTeacher != this
+            && @class.ClassroomTeacher == this
             )
         {
             _educationalClass = @class;

@@ -30,7 +30,7 @@ public class Lesson : AggregateRoot
     public override AggregateType RootType => AggregateType.Lesson;
     public string SubjectName { get; init; }
     public Classroom Classroom { get; init; }
-    public bool IsActive => _isActive;
+    public bool IsActive { get => _isActive; protected set => _isActive = value;}
     public Subject Subject => _subject;
     public virtual EducationalClass EducationalClass { get; init; }
     public Guid SchoolDayScheduleId { get; protected set; }

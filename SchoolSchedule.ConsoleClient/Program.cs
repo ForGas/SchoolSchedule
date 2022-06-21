@@ -29,6 +29,8 @@ var classRoom = new Classroom("1");
 var lesson1 = new Lesson(subject, teacher, @class1, classRoom, new TimeOnly(12, 0), new TimeOnly(12, 45));
 var lesson2 = new Lesson(subject, teacher, @class1, classRoom, new TimeOnly(12, 0), new TimeOnly(12, 45));
 
+lesson1.SetIsLessonDaySchedule(true);
+
 Test<Lesson>.Equals(lesson1, lesson2);
 
 //var classroom = new Classroom();

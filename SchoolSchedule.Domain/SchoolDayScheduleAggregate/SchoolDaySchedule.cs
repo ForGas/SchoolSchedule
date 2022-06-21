@@ -18,7 +18,7 @@ public class SchoolDaySchedule : AggregateRoot
     [NotMapped]
     public override AggregateType RootType => AggregateType.SchoolDaySchedule;
     public DateOnly Day { get; init; }
-    public bool IsActive => _isActive;
+    public bool IsActive { get => _isActive; protected set => _isActive = value; }
     public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;
 
     public void SetActiveSchoolDaySchedule(bool active) => _isActive = active;
