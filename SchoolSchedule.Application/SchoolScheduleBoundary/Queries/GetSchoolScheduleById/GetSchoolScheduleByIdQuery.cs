@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace SchoolSchedule.Application.SchoolScheduleContext.Queries.GetSchoolScheduleById;
+namespace SchoolSchedule.Application.SchoolScheduleBoundary.Queries.GetSchoolScheduleById;
 
 public record class GetSchoolScheduleByIdQuery(Guid Id) : IRequest<SchoolScheduleDto>;
 

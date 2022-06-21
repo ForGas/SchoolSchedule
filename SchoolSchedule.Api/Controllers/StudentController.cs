@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SchoolSchedule.Application.StudentContext.Commands.CreateStudent;
-using SchoolSchedule.Application.StudentContext.Queries;
-using SchoolSchedule.Application.StudentContext.Queries.GetStudentById;
-using SchoolSchedule.Application.StudentContext.Queries.GetStudents;
+using SchoolSchedule.Application.StudentBoundary.Commands.CreateStudent;
+using SchoolSchedule.Application.StudentBoundary.Queries;
+using SchoolSchedule.Application.StudentBoundary.Queries.GetStudentById;
+using SchoolSchedule.Application.StudentBoundary.Queries.GetStudents;
 
 namespace SchoolSchedule.Api.Controllers;
 

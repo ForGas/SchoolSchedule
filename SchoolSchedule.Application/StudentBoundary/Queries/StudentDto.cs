@@ -1,4 +1,4 @@
-﻿namespace SchoolSchedule.Application.StudentContext.Queries;
+﻿namespace SchoolSchedule.Application.StudentBoundary.Queries;
 
 public class StudentDto
 {

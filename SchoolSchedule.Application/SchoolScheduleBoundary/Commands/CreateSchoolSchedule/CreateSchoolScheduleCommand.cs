@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace SchoolSchedule.Application.SchoolScheduleContext.Commands.CreateSchoolSchedule;
+namespace SchoolSchedule.Application.SchoolScheduleBoundary.Commands.CreateSchoolSchedule;
 
 public class CreateSchoolScheduleCommand : IRequest<Guid>
 {

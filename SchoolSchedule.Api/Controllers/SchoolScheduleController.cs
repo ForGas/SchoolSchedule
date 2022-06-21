@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SchoolSchedule.Application.SchoolScheduleContext.Queries.GetSchoolScheduleById;
+using SchoolSchedule.Application.SchoolScheduleBoundary.Queries.GetSchoolScheduleById;
 
 namespace SchoolSchedule.Api.Controllers;
 

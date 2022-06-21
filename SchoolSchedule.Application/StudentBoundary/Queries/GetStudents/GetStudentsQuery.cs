@@ -3,7 +3,7 @@ using MediatR;
 using SchoolSchedule.Application.Contracts;
 using Microsoft.EntityFrameworkCore;
 
-namespace SchoolSchedule.Application.StudentContext.Queries.GetStudents;
+namespace SchoolSchedule.Application.StudentBoundary.Queries.GetStudents;
 
 public record class GetStudentsQuery() : IRequest<List<StudentDto>>;
 
