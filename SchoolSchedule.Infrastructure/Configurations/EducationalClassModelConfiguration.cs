@@ -17,6 +17,7 @@ public class EducationalClassModelConfiguration : IEntityTypeConfiguration<Educa
         builder.Property(x => x.Id);
         builder.Property(x => x.Name).HasMaxLength(64).IsRequired();
         builder.Ignore(x => x.DomainEvents);
+        builder.Ignore(x => x.RootType);
 
         builder
             .HasMany(ec => ec.Students)

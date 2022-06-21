@@ -1,11 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using SchoolSchedule.Domain.Common;
 using SchoolSchedule.Domain.EducationalClassAggregate;
 using SchoolSchedule.Domain.LessonAggregate;
 using SchoolSchedule.Domain.SchoolDayScheduleAggregate;
 
 Console.WriteLine("Hello, World!");
 
-
+Console.WriteLine(AggregateType.Teacher);
 
 var student1 = new Student("Test1", DateOnly.FromDateTime(DateTime.UtcNow));
 var student2 = new Student("Test2", DateOnly.FromDateTime(DateTime.UtcNow));

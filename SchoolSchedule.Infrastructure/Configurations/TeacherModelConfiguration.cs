@@ -16,6 +16,7 @@ public class TeacherModelConfiguration : IEntityTypeConfiguration<Teacher>
         builder.Property(x => x.FullName).HasMaxLength(256).IsRequired();
         builder.Property(x => x.EducationalClassId).IsRequired(false);
         builder.Ignore(x => x.DomainEvents);
+        builder.Ignore(x => x.RootType);
         builder.Ignore(x => x.Subjects);
 
         builder.Metadata.FindNavigation(nameof(Teacher.EducationalClass))

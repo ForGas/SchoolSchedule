@@ -38,7 +38,7 @@ public class EducationalClass : AggregateRoot
             foreach (var student in students)
             {
                 student.EnrollInClass(this);
-                PublishEvent(new StydentAdmissioned(student, this));
+                PublishEvent(new StydentAdmissioned(this, student));
             }
 
             return;

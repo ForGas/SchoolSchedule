@@ -1,5 +1,9 @@
-﻿namespace SchoolSchedule.Domain.Common;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
+namespace SchoolSchedule.Domain.Common;
+
+[JsonConverter(typeof(StringEnumConverter))]
 public enum AggregateType
 {
     NoDefinition = 0,
