@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using SchoolSchedule.Application.Exceptions;
 
@@ -26,21 +27,30 @@ public class ApplicationExceptionFilterAttribute : ExceptionFilterAttribute
                 return;
             case ForbiddenAccessException ex:
                 context.Result = new ForbidResult();
+                context.HttpContext.Response.StatusCode = StatusCodes.Status403Forbidden;
                 return;
             case UnauthorizedException ex:
                 context.Result = new UnauthorizedResult();
                 return;
+            case ValidationException:
+                context.Result = new BadRequestObjectResult(context.Exception as ValidationException);
+                context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
+                break;
             case ArgumentNullException ex:
                 context.Result = new BadRequestObjectResult(ex.Message);
+                context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
                 return;
             case ArgumentException ex:
                 context.Result = new BadRequestObjectResult(ex.Message);
+                context.HttpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
                 return;
-            //default:
-            //    context.Result = new BadRequestObjectResult("Exception");
-            //    return;
+            default:
+                context.Result = new BadRequestObjectResult(context.Exception);
+                context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
+                return;
         }
 
+        //context.ExceptionHandled = true;
         _logger.LogInformation($"{DateTimeOffset.UtcNow.ToString("G")} - Handling error {context.Exception.GetType().Name}");
 
         base.OnException(context);
