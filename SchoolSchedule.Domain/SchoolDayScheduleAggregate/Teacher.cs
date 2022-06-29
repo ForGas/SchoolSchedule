@@ -5,33 +5,30 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolSchedule.Domain.LessonAggregate;
 
-public class Teacher : AggregateRoot
+public class Teacher
 {
     private readonly HashSet<Subject> _subjects = new();
     private readonly List<Lesson> _lessons = new();
     private EducationalClass? _educationalClass;
 
-    protected Teacher() { }
-
-    public Teacher(List<Subject> subjects, string fullName)
+    public Teacher(Guid id, List<Subject> subjects, string fullName)
     {
-        (FullName) = (fullName);
+        (Id, FullName) = (id, fullName);
         AddTeachingSubjects(subjects);
     }
 
-    public Teacher(Subject subject, string fullName)
+    public Teacher(Guid id, Subject subject, string fullName)
     {
-        (FullName) = (fullName);
+        (Id, FullName) = (id, fullName);
         _subjects.Add(subject);
     }
 
-    [NotMapped]
-    public override AggregateType RootType => AggregateType.Teacher;
+    public Guid Id { get; set; }
     public string FullName { get; init; }
     public IReadOnlyCollection<Subject> Subjects => _subjects.ToList();
     public Guid? EducationalClassId { get; set; }
-    public virtual EducationalClass? EducationalClass => _educationalClass;
-    public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;
+    public EducationalClass? EducationalClass => _educationalClass;
+    public IReadOnlyCollection<Lesson> Lessons => _lessons;
 
     public void AddTeachingSubject(Subject subject)
     {

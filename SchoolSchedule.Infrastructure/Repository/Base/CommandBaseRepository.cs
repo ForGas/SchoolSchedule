@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SchoolSchedule.Application.Contracts;
-using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Infrastructure.Data;
+using SchoolSchedule.Infrastructure.Data.Models;
 
 namespace SchoolSchedule.Infrastructure.Repository.Base;
 

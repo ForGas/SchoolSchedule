@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
-using SchoolSchedule.Application.Contracts;
+using SchoolSchedule.Infrastructure.Repository.Shared.Student.Abstractions;
 
 namespace SchoolSchedule.Application.Features.EducationalClass.Queries.GetStudentById;
 

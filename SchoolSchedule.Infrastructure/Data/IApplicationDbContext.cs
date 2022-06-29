@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using SchoolSchedule.Domain.EducationalClassAggregate;
 using SchoolSchedule.Domain.LessonAggregate;
 
-namespace SchoolSchedule.Application.Contracts;
+namespace SchoolSchedule.Infrastructure.Data;
 
 public interface IApplicationDbContext
 {

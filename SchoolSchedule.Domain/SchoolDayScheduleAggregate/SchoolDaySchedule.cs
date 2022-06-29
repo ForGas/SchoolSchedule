@@ -1,7 +1,6 @@
 ﻿using SchoolSchedule.Domain.Common;
 using SchoolSchedule.Domain.LessonAggregate;
 using SchoolSchedule.Domain.SeedWork;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SchoolSchedule.Domain.SchoolDayScheduleAggregate;
 
@@ -14,12 +13,10 @@ public class SchoolDaySchedule : AggregateRoot
     public SchoolDaySchedule(DateOnly day)
         => (Day, _isActive) = (day, true);
 
-
-    [NotMapped]
     public override AggregateType RootType => AggregateType.SchoolDaySchedule;
     public DateOnly Day { get; init; }
     public bool IsActive { get => _isActive; protected set => _isActive = value; }
-    public virtual IReadOnlyCollection<Lesson> Lessons => _lessons;
+    public IReadOnlyCollection<Lesson> Lessons => _lessons;
 
     public void SetActiveSchoolDaySchedule(bool active) => _isActive = active;
 
@@ -27,7 +24,7 @@ public class SchoolDaySchedule : AggregateRoot
     {
         if (
             lesson != null
-            && _lessons.All(x => x.Id != x.Id)
+            && _lessons.All(x => x != lesson)
             && IsTimeCorrect(lesson)
             )
         {

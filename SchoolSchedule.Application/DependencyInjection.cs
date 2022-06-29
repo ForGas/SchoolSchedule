@@ -4,6 +4,8 @@ using System.Reflection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SchoolSchedule.Application.Behaviours;
+using SchoolSchedule.Domain.SeedWork;
+using SchoolSchedule.Application.Common;
 
 namespace SchoolSchedule.Application;
 
@@ -18,6 +20,8 @@ public static class DependencyInjection
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AggregateTransactionBehaviour<,>));
+
+        services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
 
         return services;
     }

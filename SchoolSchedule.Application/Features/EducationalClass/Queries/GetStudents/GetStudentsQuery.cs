@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
-using SchoolSchedule.Application.Contracts;
 using Microsoft.EntityFrameworkCore;
+using SchoolSchedule.Infrastructure.Repository.Shared.Student.Abstractions;
 
 namespace SchoolSchedule.Application.Features.EducationalClass.Queries.GetStudents;
 

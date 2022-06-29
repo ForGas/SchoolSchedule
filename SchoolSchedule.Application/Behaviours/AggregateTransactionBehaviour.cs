@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using SchoolSchedule.Application.Contracts;
+using SchoolSchedule.Infrastructure.Data;
 
 namespace SchoolSchedule.Application.Behaviours;
 

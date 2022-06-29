@@ -1,6 +1,6 @@
-﻿using SchoolSchedule.Domain.SeedWork;
+﻿using SchoolSchedule.Infrastructure.Data.Models;
 
-namespace SchoolSchedule.Application.Contracts;
+namespace SchoolSchedule.Infrastructure.Repository.Base;
 
 public interface ICommandBaseRepository<T>
     where T : IdentityBase

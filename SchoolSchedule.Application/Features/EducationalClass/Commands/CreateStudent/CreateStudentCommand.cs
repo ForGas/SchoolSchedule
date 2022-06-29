@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using SchoolSchedule.Application.Contracts;
 using SchoolSchedule.Domain.EducationalClassAggregate;
+using SchoolSchedule.Infrastructure.Repository.Shared.Student.Abstractions;
 
 namespace SchoolSchedule.Application.Features.EducationalClass.Commands.CreateStudent;
 
@@ -20,7 +21,7 @@ public class CreateStudentCommandHandler : IRequestHandler<CreateStudentCommand,
 
     public async Task<Guid> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
     {
-        var student = new Student(request.FullName, DateOnly.FromDateTime(request.BirthYear));
+        var student = new Student(Guid.NewGuid(), request.FullName, DateOnly.FromDateTime(request.BirthYear), null); ; ;
         var result = await _studentRepository.EnrollmentInSchoolAsync(student);
 
         _ = _studentRepository.SaveChangesAsync(cancellationToken);

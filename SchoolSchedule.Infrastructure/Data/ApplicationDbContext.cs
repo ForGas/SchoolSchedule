@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using SchoolSchedule.Application.Contracts;
 using SchoolSchedule.Domain.EducationalClassAggregate;
 using SchoolSchedule.Domain.LessonAggregate;
 using SchoolSchedule.Domain.SeedWork;

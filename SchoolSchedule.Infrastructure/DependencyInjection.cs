@@ -1,11 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SchoolSchedule.Application.Common;
-using SchoolSchedule.Application.Contracts;
-using SchoolSchedule.Domain.SeedWork;
 using SchoolSchedule.Infrastructure.Data;
 using SchoolSchedule.Infrastructure.Repository;
+using SchoolSchedule.Infrastructure.Repository.Shared.Student.Abstractions;
 
 namespace SchoolSchedule.Infrastructure;
 
@@ -23,7 +21,6 @@ public static class DependencyInjection
             }, ServiceLifetime.Scoped);
 
         services.AddScoped<IApplicationDbContext, ApplicationDbContext>();
-        services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
 
         return services;
     }

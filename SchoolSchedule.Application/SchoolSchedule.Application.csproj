@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SchoolSchedule.Domain\SchoolSchedule.Domain.csproj" />
+    <ProjectReference Include="..\SchoolSchedule.Infrastructure\SchoolSchedule.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

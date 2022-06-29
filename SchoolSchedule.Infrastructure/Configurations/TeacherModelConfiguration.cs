@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SchoolSchedule.Domain.LessonAggregate;
+using SchoolSchedule.Infrastructure.Data.Models;
 
 namespace SchoolSchedule.Infrastructure.Configurations;
 
 #nullable disable
-public class TeacherModelConfiguration : IEntityTypeConfiguration<Teacher>
+public class TeacherModelConfiguration : IEntityTypeConfiguration<TeacherSaveModel>
 {
-    public void Configure(EntityTypeBuilder<Teacher> builder)
+    public void Configure(EntityTypeBuilder<TeacherSaveModel> builder)
     {
         builder.ToTable("Teachers");
         builder.HasKey(x => x.Id);
@@ -15,15 +15,7 @@ public class TeacherModelConfiguration : IEntityTypeConfiguration<Teacher>
         builder.Property(x => x.Id);
         builder.Property(x => x.FullName).HasMaxLength(256).IsRequired();
         builder.Property(x => x.EducationalClassId).IsRequired(false);
-        builder.Ignore(x => x.DomainEvents);
-        builder.Ignore(x => x.RootType);
         builder.Ignore(x => x.Subjects);
-
-        builder.Metadata.FindNavigation(nameof(Teacher.EducationalClass))
-            .SetPropertyAccessMode(PropertyAccessMode.Field);
-
-        //builder.Metadata.FindNavigation(nameof(Teacher.Subjects))
-        //    .SetPropertyAccessMode(PropertyAccessMode.Field);
 
         builder.OwnsMany(t => t.Subjects, s =>
         {

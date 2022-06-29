@@ -1,18 +1,17 @@
-﻿using SchoolSchedule.Application.Contracts;
-using SchoolSchedule.Domain.EducationalClassAggregate;
+﻿using SchoolSchedule.Domain.EducationalClassAggregate;
 using SchoolSchedule.Infrastructure.Data;
+using SchoolSchedule.Infrastructure.Data.Models;
 using SchoolSchedule.Infrastructure.Repository.Base;
+using SchoolSchedule.Infrastructure.Repository.Shared.Student.Abstractions;
 
-namespace SchoolSchedule.Infrastructure.Repository
+namespace SchoolSchedule.Infrastructure.Repository;
+
+public class CommandStudentRepository : CommandBaseRepository<StudentSaveModel>, ICommandStudentRepository
 {
-    public class CommandStudentRepository : CommandBaseRepository<Student>, ICommandStudentRepository
-    {
-        public CommandStudentRepository(ApplicationDbContext context) : base(context) { }
+    public CommandStudentRepository(ApplicationDbContext context) : base(context) { }
 
-        public async Task<Guid> EnrollmentInSchoolAsync(Student student)
-        {
-            var result = await SaveAsync(student);
-            return result;
-        }
+    public async Task<Guid> EnrollmentInSchoolAsync(Student student)
+    {
+        throw new NotImplementedException();
     }
 }
